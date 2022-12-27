@@ -53,7 +53,8 @@ with st.echo(code_location='below'):
 
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
-    newStartDate = st.date_input("Start date and time", StartDate)
+    newStartDate = st.date_input("Start date", StartDate)
 
-    st.write(StartDate)
+    newStartTime = st.time_input("Start time", StartDate)
+
     
