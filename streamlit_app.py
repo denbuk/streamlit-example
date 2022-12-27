@@ -45,83 +45,30 @@ with st.echo(code_location='below'):
 
     with tab1:
         newCampaignId = st.text_input('New campaign ID')
-
-        urlRegex = ""
-        internalUsers = True
-        templateId = "PageImage"
-        templateType = "gradient"
-        templateIdIndex = bannerTypes.index(templateId)
-        templateTypeIndex = templateTypes.index(templateType)
-        StartDate = datetime.now()
-        EndDate = datetime.now()
-        headlineText = ""
-        headlineStyle = "primary"
-        subHeadlineText = ""
-        subHeadlineStyle = "primary"
-        headlineStyleIndex = headlineStyles.index(headlineStyle)
-        subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
-        buttonsNumber = "1"
-        button1Text = ""
-        button1Style = "primary"
-        button1StyleIndex = buttonStyles.index(button1Style)
-        button1Action = "url"
-        button1ActionIndex = buttonActions.index(button1Action)
-        button1Url = ""
-        button1Tag = "_ic="
-        button2Text = ""
-        button2Style = "primary"
-        button2StyleIndex = buttonStyles.index(button2Style)
-        button2Action = "url"
-        button2ActionIndex = buttonActions.index(button2Action)
-        button2Url = ""
-        button2Tag = "_ic="
-        backgroundImageS = ""
-        backgroundImageM = ""
-        backgroundImageL = ""
-        backgroundImageXL = ""
-        backgroundGradient = "primary"
-        backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
-        imageGradient = ""
-        imageAlt = ""
-    with tab2:
-        campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
-        index = items_ids.index(campaign_option)
-        item_id = items_ids[index]
-        item_properties = items_list[index]['properties']
-        campaignId = item_properties['campaignId']
-        urlRegex = item_properties['urlRegex']
-        internalUsers = item_properties['userInternal']
-        templateId = item_properties['tempateId']
-        templateType = item_properties['templateType']
-        templateIdIndex = bannerTypes.index(templateId)
-        templateTypeIndex = templateTypes.index(templateType)
-        StartDate = datetime.fromtimestamp(item_properties['validFrom'])
-        EndDate = datetime.fromtimestamp(item_properties['validTill'])
-        texts = json.loads(item_properties['texts'])
-        headlineText = texts['headlineText']
-        headlineStyle = texts['headlineStyle']
-        subHeadlineText = texts['subHeadlineText']
-        subHeadlineStyle = texts['subHeadlineStyle']
-        headlineStyleIndex = headlineStyles.index(headlineStyle)
-        subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
-        buttons = json.loads(item_properties['buttons'])
-        buttonsNumber = str(len(buttons))
-        button1Text = buttons[0]['buttonText']
-        button1Style = buttons[0]['buttonStyle']
-        button1StyleIndex = buttonStyles.index(button1Style)
-        button1Action = buttons[0]['buttonAction']
-        button1ActionIndex = buttonActions.index(button1Action)
-        button1Url = buttons[0]['buttonUrl']
-        button1Tag = buttons[0]['buttonTag']
-        if len(buttons) == 2:
-            button2Text = buttons[1]['buttonText']
-            button2Style = buttons[1]['buttonStyle']
-            button2StyleIndex = buttonStyles.index(button2Style)
-            button2Action = buttons[1]['buttonAction']
-            button2ActionIndex = buttonActions.index(button2Action)
-            button2Url = buttons[1]['buttonUrl']
-            button2Tag = buttons[1]['buttonTag']
-        else:
+        tab = "tab1"
+        if tab == "tab1":
+            urlRegex = ""
+            internalUsers = True
+            templateId = "PageImage"
+            templateType = "gradient"
+            templateIdIndex = bannerTypes.index(templateId)
+            templateTypeIndex = templateTypes.index(templateType)
+            StartDate = datetime.now()
+            EndDate = datetime.now()
+            headlineText = ""
+            headlineStyle = "primary"
+            subHeadlineText = ""
+            subHeadlineStyle = "primary"
+            headlineStyleIndex = headlineStyles.index(headlineStyle)
+            subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
+            buttonsNumber = "1"
+            button1Text = ""
+            button1Style = "primary"
+            button1StyleIndex = buttonStyles.index(button1Style)
+            button1Action = "url"
+            button1ActionIndex = buttonActions.index(button1Action)
+            button1Url = ""
+            button1Tag = "_ic="
             button2Text = ""
             button2Style = "primary"
             button2StyleIndex = buttonStyles.index(button2Style)
@@ -129,15 +76,71 @@ with st.echo(code_location='below'):
             button2ActionIndex = buttonActions.index(button2Action)
             button2Url = ""
             button2Tag = "_ic="
-        images = json.loads(item_properties['images'])
-        backgroundImageS = images['backgroundImageS']
-        backgroundImageM = images['backgroundImageM']
-        backgroundImageL = images['backgroundImageL']
-        backgroundImageXL = images['backgroundImageXL']
-        backgroundGradient = images['backgroundGradient']
-        backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
-        imageGradient = images['imageGradient']
-        imageAlt = images['imageAlt']
+            backgroundImageS = ""
+            backgroundImageM = ""
+            backgroundImageL = ""
+            backgroundImageXL = ""
+            backgroundGradient = "primary"
+            backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
+            imageGradient = ""
+            imageAlt = ""
+    with tab2:
+        tab = "tab2"
+        if tab == "tab2":
+            campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
+            index = items_ids.index(campaign_option)
+            item_id = items_ids[index]
+            item_properties = items_list[index]['properties']
+            campaignId = item_properties['campaignId']
+            urlRegex = item_properties['urlRegex']
+            internalUsers = item_properties['userInternal']
+            templateId = item_properties['tempateId']
+            templateType = item_properties['templateType']
+            templateIdIndex = bannerTypes.index(templateId)
+            templateTypeIndex = templateTypes.index(templateType)
+            StartDate = datetime.fromtimestamp(item_properties['validFrom'])
+            EndDate = datetime.fromtimestamp(item_properties['validTill'])
+            texts = json.loads(item_properties['texts'])
+            headlineText = texts['headlineText']
+            headlineStyle = texts['headlineStyle']
+            subHeadlineText = texts['subHeadlineText']
+            subHeadlineStyle = texts['subHeadlineStyle']
+            headlineStyleIndex = headlineStyles.index(headlineStyle)
+            subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
+            buttons = json.loads(item_properties['buttons'])
+            buttonsNumber = str(len(buttons))
+            button1Text = buttons[0]['buttonText']
+            button1Style = buttons[0]['buttonStyle']
+            button1StyleIndex = buttonStyles.index(button1Style)
+            button1Action = buttons[0]['buttonAction']
+            button1ActionIndex = buttonActions.index(button1Action)
+            button1Url = buttons[0]['buttonUrl']
+            button1Tag = buttons[0]['buttonTag']
+            if len(buttons) == 2:
+                button2Text = buttons[1]['buttonText']
+                button2Style = buttons[1]['buttonStyle']
+                button2StyleIndex = buttonStyles.index(button2Style)
+                button2Action = buttons[1]['buttonAction']
+                button2ActionIndex = buttonActions.index(button2Action)
+                button2Url = buttons[1]['buttonUrl']
+                button2Tag = buttons[1]['buttonTag']
+            else:
+                button2Text = ""
+                button2Style = "primary"
+                button2StyleIndex = buttonStyles.index(button2Style)
+                button2Action = "url"
+                button2ActionIndex = buttonActions.index(button2Action)
+                button2Url = ""
+                button2Tag = "_ic="
+            images = json.loads(item_properties['images'])
+            backgroundImageS = images['backgroundImageS']
+            backgroundImageM = images['backgroundImageM']
+            backgroundImageL = images['backgroundImageL']
+            backgroundImageXL = images['backgroundImageXL']
+            backgroundGradient = images['backgroundGradient']
+            backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
+            imageGradient = images['imageGradient']
+            imageAlt = images['imageAlt']
 
     if 1==1:
         st.subheader('Campaign definition')
@@ -189,7 +192,7 @@ with st.echo(code_location='below'):
                 newButton2Style = st.selectbox('Button 2 Style', pd.Series(buttonStyles), button2StyleIndex)
                 newButton2Action = st.selectbox('Button 2 Action', pd.Series(buttonActions), button2ActionIndex)
                 newButton2Url = st.text_input('Button 2 URL', button2Url)
-                newButton2Tag = st.text_input("Button 2 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
+                newButton2Tag = st.text_input("Button 2 Tag - [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
         st.subheader('Images')
         if newTemplateType == "gradient":
             newImageAlt = st.text_input('Image Alt', imageAlt)
