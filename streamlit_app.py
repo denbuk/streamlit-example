@@ -9,6 +9,8 @@ import json
 with st.echo(code_location='below'):
 
     st.title('CMS for o2.cz campaigns')
+
+    bannerTypes = ["VelkePromo", "PageImage", "MalePromo"]
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -16,7 +18,7 @@ with st.echo(code_location='below'):
  
     data = {"properties": 
 	  {
-	  	"b": '[{"template":"Eshop","template_variant":"half_image_desktop","scenario_id":"samsung_cerven","position":"1","cta_img":"https://www.o2.cz/servis/exponea-images/2022-01-q1/1200x224-samsung?field=data&_linka=a336439","product_image1":"https://storage.googleapis.com/otu-app-storage/5851ab46-b9d8-11e9-beef-92ec88286fd6/media/original/ffaaa35a-e1be-11ec-8f0f-9a6487c53521","product_position1":"LEFT","product_image2":"","product_position2":"","tab_text":"Samsung se slevou 1 000 Kč","headline":"Sleva 1 000 Kč na Samsung","description":"<b>Pořiďte si třeba Samsung Galaxy A33 5G</b>","price":"","crossedPrice":"","headline_color":"LIGHT","cta_text1":"Chci telefon","landing1":"https://www.o2.cz/telefony-a-zarizeni/produkt/samsung-galaxy-a33-5g-128gb-cerna?_ic=exp-pi-o2cz-ohw-hw_cerven-2022/06/01-zkp","landing1_new_tab":false,"cta_color1":"GREEN","cta_text2":"","landing2":"","cta_color2":""}]',
+	  	
 	  }
     }
  
@@ -24,17 +26,12 @@ with st.echo(code_location='below'):
     response = requests.get(url, headers=headers)
 
     resp = response.json()
-
     items_list = resp.get("data")
-
     items_ids = []
-
     st.write(items_list)
 
     for x in items_list:
         items_ids.append(x['item_id'])
-    
-    st.write(items_ids)
 
     campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
 
@@ -43,9 +40,13 @@ with st.echo(code_location='below'):
     item_properties = items_list[index]['properties']
     campaignId = item_properties['campaignId']
     urlRegex = item_properties['urlRegex']
+    tempateId = item_properties['templateId']
+    templateIdIndex = bannerTypes.index(tempateId)
 
     st.subheader('Campaign definition')
 
     newCampaignId = st.text_input('Campaign Name', campaignId)
 
-    newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help](%s)" % "https://regexr.com/", urlRegex)
+    newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
+
+    newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
