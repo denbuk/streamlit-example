@@ -31,15 +31,6 @@ with st.echo(code_location='below'):
     }
  
     #response = requests.put(url, headers=headers, json=data)
-    response = requests.get(url, headers=headers)
-
-    resp = response.json()
-    items_list = resp.get("data")
-    items_ids = []
-    #st.write(items_list)
-
-    for x in items_list:
-        items_ids.append(x['item_id'])
 
     tab1, tab2 = st.tabs(["Create new campaign", "Explore campaigns"])
 
@@ -87,6 +78,16 @@ with st.echo(code_location='below'):
     with tab2:
         tab = "tab2"
         if tab == "tab2":
+            response = requests.get(url, headers=headers)
+
+            resp = response.json()
+            items_list = resp.get("data")
+            items_ids = []
+            #st.write(items_list)
+
+            for x in items_list:
+                items_ids.append(x['item_id'])
+                
             campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
             index = items_ids.index(campaign_option)
             item_id = items_ids[index]
