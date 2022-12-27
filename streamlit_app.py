@@ -17,6 +17,7 @@ with st.echo(code_location='below'):
     subHeadlineStyles = ["primary", "secondary"]
     buttonStyles = ["primary", "secondary", "neutral"]
     buttonActions = ["url", "none"]
+    backgroundGradientStyles = ["primary", "secondary"]
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -46,6 +47,7 @@ with st.echo(code_location='below'):
     item_properties = items_list[index]['properties']
     campaignId = item_properties['campaignId']
     urlRegex = item_properties['urlRegex']
+    internalUsers = item_properties['userInternal']
     templateId = item_properties['tempateId']
     templateType = item_properties['templateType']
     templateIdIndex = bannerTypes.index(templateId)
@@ -84,12 +86,21 @@ with st.echo(code_location='below'):
         button2ActionIndex = buttonActions.index(button2Action)
         button2Url = ""
         button2Tag = "_ic="
+    images = json.loads(item_properties['images'])
+    backgroundImageS = images['backgroundImageS']
+    backgroundImageM = images['backgroundImageM']
+    backgroundImageL = images['backgroundImageL']
+    backgroundImageXL = images['backgroundImageXL']
+    backgroundGradient = images['backgroundGradient']
+    backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
+    imageGradient = images['imageGradient']
+    imageAlt = images['imageAlt']
 
     st.subheader('Campaign definition')
 
     newCampaignId = st.text_input('Campaign Name', campaignId)
 
-    col11, col12 = st.columns(2)
+    col11, col12, col13 = st.columns(3)
     
     with col11:
         newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
@@ -99,6 +110,9 @@ with st.echo(code_location='below'):
             newTempateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
         else:
             newTempateType = ""
+    
+    with col13:
+        newInternalUsers = st.checkbox('Seen by internal users', internalUsers)
 
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
@@ -146,7 +160,7 @@ with st.echo(code_location='below'):
         newButton1Style = st.selectbox('Button 1 Style', pd.Series(buttonStyles), button1StyleIndex)
         newButton1Action = st.selectbox('Button 1 Action', pd.Series(buttonActions), button1ActionIndex)
         newButton1Url = st.text_input('Button 1 URL', button1Url)
-        newButton1Tag = st.text_input('Button 1 Tag', button1Tag)
+        newButton1Tag = st.text_input("Button 1 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button1Tag)
 
     with col42:
         if newButtonNumber == "2":
@@ -155,4 +169,35 @@ with st.echo(code_location='below'):
             newButton2Style = st.selectbox('Button 2 Style', pd.Series(buttonStyles), button2StyleIndex)
             newButton2Action = st.selectbox('Button 2 Action', pd.Series(buttonActions), button2ActionIndex)
             newButton2Url = st.text_input('Button 2 URL', button2Url)
-            newButton2Tag = st.text_input('Button 2 Tag', button2Tag)
+            newButton2Tag = st.text_input("Button 2 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
+    
+    st.subheader('Images')
+
+    if newTempateType == "gradient":
+        col51, col52 = st.columns(2)
+
+        with col51:
+            newBackgroundGradient = st.selectbox('Background Gradient', pd.Series(backgroundGradientStyles), backgroundGradientIndex)
+        
+        with col52:
+            newImageGradient = st.text_input('Image Gradient', imageGradient)
+
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+    elif newTempateType == "full-image":
+        col51, col52, col53, col54 = st.columns(4)
+        with col51:
+            newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
+        with col52:
+            newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
+        with col53:
+            newbackgroundImageL = st.text_input('Background Image L', backgroundImageL)
+        with col54:
+            newbackgroundImageXL = st.text_input('Background Image XL', backgroundImageXL)
+
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+    else:
+        newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
+
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+
+
