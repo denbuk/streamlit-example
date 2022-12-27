@@ -41,7 +41,6 @@ with st.echo(code_location='below'):
     index = items_ids.index(campaign_option)
     item_id = items_ids[index]
     item_properties = items_list[index]['properties']
-    item_properties_json = json.loads(item_properties)
-    campaignId = item_properties_json['campaignId']
+    campaignId = item_properties['campaignId']
 
     title = st.text_input('Campaign Name', campaignId)
