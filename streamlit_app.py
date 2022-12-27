@@ -40,8 +40,8 @@ with st.echo(code_location='below'):
     item_properties = items_list[index]['properties']
     campaignId = item_properties['campaignId']
     urlRegex = item_properties['urlRegex']
-    tempateId = item_properties['templateId']
-    templateIdIndex = bannerTypes.index(tempateId)
+    templateId = item_properties['templateId']
+    templateIdIndex = bannerTypes.index(templateId)
 
     st.subheader('Campaign definition')
 
