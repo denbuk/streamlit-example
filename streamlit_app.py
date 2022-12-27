@@ -52,7 +52,7 @@ with st.echo(code_location='below'):
     headlineText = texts['headlineText']
     headlineStyle = texts['headlineStyle']
     subHeadlineText = texts['subHeadlineText']
-    subHeadlineStyle = texts['subHeadlineStyel']
+    subHeadlineStyle = texts['subHeadlineStyle']
 
     st.subheader('Campaign definition')
 
