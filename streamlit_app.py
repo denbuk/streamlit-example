@@ -78,10 +78,10 @@ with st.echo(code_location='below'):
         button2Tag = buttons[1]['buttonTag']
     else:
         button2Text = ""
-        button2Style = ""
-        button2StyleIndex = "primary"
-        button2Action = buttons[1]['buttonAction']
-        button2ActionIndex = "url"
+        button2Style = "primary"
+        button2StyleIndex = buttonStyles.index(button2Style)
+        button2Action = "url"
+        button2ActionIndex = buttonActions.index(button2Action)
         button2Url = ""
         button2Tag = "_ic="
 
