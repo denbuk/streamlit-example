@@ -23,6 +23,12 @@ with st.echo(code_location='below'):
 
     resp = response.json()
 
-    #items_list = json.loads(response.json())
+    items_list = resp.get("data")
 
-    st.write("JSON Response ", resp.get("data"))
+    items_ids = []
+
+    for x in items_list:
+        items_ids.append(x.item_id)
+
+
+    st.write("JSON Response ", items_ids)
