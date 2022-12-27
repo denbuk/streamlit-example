@@ -44,6 +44,7 @@ with st.echo(code_location='below'):
     templateId = item_properties['tempateId']
     templateIdIndex = bannerTypes.index(templateId)
     StartDate = datetime.fromtimestamp(item_properties['validFrom'])
+    EndDate = datetime.fromtimestamp(item_properties['validTill'])
 
     st.subheader('Campaign definition')
 
@@ -53,8 +54,18 @@ with st.echo(code_location='below'):
 
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
-    newStartDate = st.date_input("Start date", StartDate)
+    col1, col2, col3, col4 = st.columns(3)
 
-    newStartTime = st.time_input("Start time", StartDate)
+    with col1:
+        newStartDate = st.date_input("Start date", StartDate)
+
+    with col2:
+        newStartTime = st.time_input("Start time", StartDate)
+
+    with col3:
+        newEndDate = st.date_input("End date", EndDate)
+
+    with col4:
+        newEndTime = st.time_input("End time", EndDate)
 
     
