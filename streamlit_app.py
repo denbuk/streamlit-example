@@ -142,17 +142,17 @@ with st.echo(code_location='below'):
 
     with col41:
         st.text("Button 1")
-        newButton1Text = st.text_input('Button Text', button1Text)
-        newButton1Style = st.selectbox('Button Style', pd.Series(buttonStyles), button1StyleIndex)
-        newButton1Action = st.selectbox('Button Action', pd.Series(buttonActions), button1ActionIndex)
-        newButton1Url = st.text_input('Button URL', button1Url)
-        newButton1Tag = st.text_input('Button Tag', button1Tag)
+        newButton1Text = st.text_input('Button 1 Text', button1Text)
+        newButton1Style = st.selectbox('Button 1 Style', pd.Series(buttonStyles), button1StyleIndex)
+        newButton1Action = st.selectbox('Button 1 Action', pd.Series(buttonActions), button1ActionIndex)
+        newButton1Url = st.text_input('Button 1 URL', button1Url)
+        newButton1Tag = st.text_input('Button 1 Tag', button1Tag)
 
     with col42:
         if newButtonNumber == "2":
             st.text("Button 2")
-            newButton2Text = st.text_input('Button Text', button2Text)
-            newButton2Style = st.selectbox('Button Style', pd.Series(buttonStyles), button2StyleIndex)
-            newButton2Action = st.selectbox('Button Action', pd.Series(buttonActions), button2ActionIndex)
-            newButton2Url = st.text_input('Button URL', button2Url)
-            newButton2Tag = st.text_input('Button Tag', button2Tag)
+            newButton2Text = st.text_input('Button 2 Text', button2Text)
+            newButton2Style = st.selectbox('Button 2 Style', pd.Series(buttonStyles), button2StyleIndex)
+            newButton2Action = st.selectbox('Button 2 Action', pd.Series(buttonActions), button2ActionIndex)
+            newButton2Url = st.text_input('Button 2 URL', button2Url)
+            newButton2Tag = st.text_input('Button 2 Tag', button2Tag)
