@@ -20,4 +20,4 @@ with st.echo(code_location='below'):
  
     response = requests.post(url, headers=headers, json=data)
 
-    st.write(response)
+    st.write("JSON Response ", response.json())
