@@ -106,3 +106,9 @@ with st.echo(code_location='below'):
     
     with col32:
         newSubHeadlineStyle = st.selectbox('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
+    
+    st.subheader('Buttons')
+
+    newButtonNumber = st.select_slider(
+    'Number of button',
+    options=[1, 2])
