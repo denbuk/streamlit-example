@@ -27,8 +27,12 @@ with st.echo(code_location='below'):
 
     items_ids = []
 
+    st.write(items_list)
+
     for x in items_list:
         items_ids.append(x['item_id'])
 
 
-    st.selectbox("JSON Response ", pd.Series(items_ids))
+    campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
+
+    title = st.text_input('Campaign Name', "Hello")
