@@ -57,6 +57,8 @@ with st.echo(code_location='below'):
     subHeadlineStyle = texts['subHeadlineStyle']
     headlineStyleIndex = headlineStyles.index(headlineStyle)
     subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
+    buttons = json.loads(item_properties['buttons'])
+    buttonsNumber = str(len(buttons))
 
     st.subheader('Campaign definition')
 
@@ -109,6 +111,4 @@ with st.echo(code_location='below'):
     
     st.subheader('Buttons')
 
-    newButtonNumber = st.select_slider(
-    'Number of button',
-    options=[1, 2])
+    newButtonNumber = st.select_slider('Number of buttons',["1", "2"],buttonsNumber)
