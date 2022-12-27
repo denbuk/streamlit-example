@@ -38,6 +38,6 @@ with st.echo(code_location='below'):
 
     index = items_ids.index(campaign_option)
     item_id = items_ids[index]
-    item_properties = items_list[item_id]
+    item_properties = items_list[index]['properties']["b"]
 
     title = st.text_input('Campaign Name', item_properties)
