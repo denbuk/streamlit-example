@@ -12,6 +12,7 @@ with st.echo(code_location='below'):
     st.title('CMS for o2.cz campaigns')
 
     bannerTypes = ["VelkePromo", "PageImage", "MalePromo"]
+    templateTypes = ["full-image", "gradient"]
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -42,6 +43,7 @@ with st.echo(code_location='below'):
     campaignId = item_properties['campaignId']
     urlRegex = item_properties['urlRegex']
     templateId = item_properties['tempateId']
+    templateType = item_properties['templateType']
     templateIdIndex = bannerTypes.index(templateId)
     StartDate = datetime.fromtimestamp(item_properties['validFrom'])
     EndDate = datetime.fromtimestamp(item_properties['validTill'])
@@ -50,7 +52,16 @@ with st.echo(code_location='below'):
 
     newCampaignId = st.text_input('Campaign Name', campaignId)
 
-    newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+    col11, col12 = st.columns(2)
+    
+    with col11:
+        newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+
+    with col12:
+        if newTempateId in ["VelkePromo", "PageImage"]:
+            newTempateType = st.selectbox("Template type", pd.Series(bannerTypes), templateIdIndex)
+        else:
+            newTempateType = ""
 
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
