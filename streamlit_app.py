@@ -41,17 +41,10 @@ with st.echo(code_location='below'):
     for x in items_list:
         items_ids.append(x['item_id'])
 
-    col101, col102, col103 = st.columns(3)
-    with col101:
+    if st.button('Create new campaign'):
+        newCampaignId = st.text_input('New campaign ID')
+    elif st.button('Explore campaigns'):
         campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
-
-    with col102:
-        if st.button('Create new campaign'):
-            with col101:
-                campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids), label_visibility="hidden")
-            with col103:
-                newCampaignId = st.text_input('New campaign ID')
-    
 
     index = items_ids.index(campaign_option)
     item_id = items_ids[index]
