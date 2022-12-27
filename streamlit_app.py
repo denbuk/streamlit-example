@@ -31,4 +31,4 @@ with st.echo(code_location='below'):
         items_ids.append(x['item_id'])
 
 
-    st.write("JSON Response ", items_ids)
+    st.selectbox("JSON Response ", pd.Series(items_ids))
