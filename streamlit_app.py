@@ -43,4 +43,9 @@ with st.echo(code_location='below'):
     item_properties = items_list[index]['properties']
     campaignId = item_properties['campaignId']
 
+    st.subheader('Campaign definition')
+
     title = st.text_input('Campaign Name', campaignId)
+
+    st.subheader('Targeted URIs, regex representation.')
+    st.markdown("[I need help](%s)" % https://regexr.com/)
