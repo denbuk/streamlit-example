@@ -55,4 +55,5 @@ with st.echo(code_location='below'):
 
     newStartDate = st.date_input("Start date and time", StartDate)
 
+    st.write(StartDate)
     
