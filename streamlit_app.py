@@ -23,4 +23,4 @@ with st.echo(code_location='below'):
 
     items_list = json.loads(response.json())
 
-    st.write("JSON Response ", items_list)
+    st.write("JSON Response ", response.json())
