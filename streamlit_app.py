@@ -49,6 +49,44 @@ with st.echo(code_location='below'):
 
     if newCampaign:
         newCampaignId = st.text_input('New campaign ID')
+
+        urlRegex = ""
+        internalUsers = True
+        templateId = "PageImage"
+        templateType = "gradient"
+        templateIdIndex = bannerTypes.index(templateId)
+        templateTypeIndex = templateTypes.index(templateType)
+        StartDate = datetime.today
+        EndDate = datetime.today
+        headlineText = ""
+        headlineStyle = "primary"
+        subHeadlineText = ""
+        subHeadlineStyle = "primary"
+        headlineStyleIndex = headlineStyles.index(headlineStyle)
+        subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
+        buttonsNumber = "1"
+        button1Text = ""
+        button1Style = "primary"
+        button1StyleIndex = buttonStyles.index(button1Style)
+        button1Action = "url"
+        button1ActionIndex = buttonActions.index(button1Action)
+        button1Url = ""
+        button1Tag = "_ic="
+        button2Text = ""
+        button2Style = "primary"
+        button2StyleIndex = buttonStyles.index(button2Style)
+        button2Action = "url"
+        button2ActionIndex = buttonActions.index(button2Action)
+        button2Url = ""
+        button2Tag = "_ic="
+        backgroundImageS = ""
+        backgroundImageM = ""
+        backgroundImageL = ""
+        backgroundImageXL = ""
+        backgroundGradient = "primary"
+        backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
+        imageGradient = ""
+        imageAlt = ""
     elif exploreCampaigns:
         campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
         index = items_ids.index(campaign_option)
@@ -105,118 +143,93 @@ with st.echo(code_location='below'):
         imageGradient = images['imageGradient']
         imageAlt = images['imageAlt']
 
-        st.subheader('Campaign definition')
-
-        newCampaignId = st.text_input('Campaign Name', campaignId)
-
-        col11, col12, col13 = st.columns(3)
-        
-        with col11:
-            newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
-
-        with col12:
-            if newTempateId in ["VelkePromo", "PageImage"]:
-                newTempateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
-            else:
-                newTempateType = ""
-        
-        with col13:
-            newInternalUsers = st.checkbox('Seen by internal users', internalUsers)
-
-        newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
-
-        col1, col2, col3, col4 = st.columns(4)
-
-        with col1:
-            newStartDate = st.date_input("Start date", StartDate)
-
-        with col2:
-            newStartTime = st.time_input("Start time", StartDate)
-
-        with col3:
-            newEndDate = st.date_input("End date", EndDate)
-
-        with col4:
-            newEndTime = st.time_input("End time", EndDate)
-
-        st.subheader('Texts')
-
-        col21, col22 = st.columns(2)
-
-        with col21:
-            newHeadlineText = st.text_input('Headline Text', headlineText)
-        
-        with col22:
-            newHeadlineStyle = st.selectbox('Headline Style', pd.Series(headlineStyles), headlineStyleIndex)
-
-        col31, col32 = st.columns(2)
-
-        with col31:
-            newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
-        
-        with col32:
-            newSubHeadlineStyle = st.selectbox('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
-        
-        st.subheader('Buttons')
-
-        newButtonNumber = st.select_slider('Number of buttons',["1", "2"], buttonsNumber)
-
-        col41, col42 = st.columns(2)
-
-        with col41:
-            st.text("Button 1")
-            newButton1Text = st.text_input('Button 1 Text', button1Text)
-            newButton1Style = st.selectbox('Button 1 Style', pd.Series(buttonStyles), button1StyleIndex)
-            newButton1Action = st.selectbox('Button 1 Action', pd.Series(buttonActions), button1ActionIndex)
-            newButton1Url = st.text_input('Button 1 URL', button1Url)
-            newButton1Tag = st.text_input("Button 1 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button1Tag)
-
-        with col42:
-            if newButtonNumber == "2":
-                st.text("Button 2")
-                newButton2Text = st.text_input('Button 2 Text', button2Text)
-                newButton2Style = st.selectbox('Button 2 Style', pd.Series(buttonStyles), button2StyleIndex)
-                newButton2Action = st.selectbox('Button 2 Action', pd.Series(buttonActions), button2ActionIndex)
-                newButton2Url = st.text_input('Button 2 URL', button2Url)
-                newButton2Tag = st.text_input("Button 2 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
-        
-        st.subheader('Images')
-
-        if newTempateType == "gradient":
-            newImageAlt = st.text_input('Image Alt', imageAlt)
-            showImages = st.checkbox('Show images', False)
-            col51, col52 = st.columns(2)
-            with col51:
-                newBackgroundGradient = st.selectbox('Background Gradient', pd.Series(backgroundGradientStyles), backgroundGradientIndex)
-            with col52:
-                newImageGradient = st.text_input('Image Gradient', imageGradient)
-                if showImages == True:
-                    st.image(newImageGradient, caption='Image Gradient')
-        elif newTempateType == "full-image":
-            newImageAlt = st.text_input('Image Alt', imageAlt)
-            showImages = st.checkbox('Show images', False)
-            col51, col52, col53, col54 = st.columns(4)
-            with col51:
-                newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
-                if showImages == True:
-                    st.image(newbackgroundImageS, caption='Image S')
-            with col52:
-                newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
-                if showImages == True:
-                    st.image(newbackgroundImageM, caption='Image M')
-            with col53:
-                newbackgroundImageL = st.text_input('Background Image L', backgroundImageL)
-                if showImages == True:
-                    st.image(newbackgroundImageL, caption='Image L')
-            with col54:
-                newbackgroundImageXL = st.text_input('Background Image XL', backgroundImageXL)
-                if showImages == True:
-                    st.image(newbackgroundImageXL, caption='Image XL')
+    st.subheader('Campaign definition')
+    newCampaignId = st.text_input('Campaign Name', campaignId)
+    col11, col12, col13 = st.columns(3)
+    with col11:
+        newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+    with col12:
+        if newTempateId in ["VelkePromo", "PageImage"]:
+            newTempateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
         else:
-            newImageAlt = st.text_input('Image Alt', imageAlt)
-            showImages = st.checkbox('Show images', False)
+            newTempateType = ""
+    with col13:
+        newInternalUsers = st.checkbox('Seen by internal users', internalUsers)
+    newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        newStartDate = st.date_input("Start date", StartDate)
+    with col2:
+        newStartTime = st.time_input("Start time", StartDate)
+    with col3:
+        newEndDate = st.date_input("End date", EndDate)
+    with col4:
+        newEndTime = st.time_input("End time", EndDate)
+    st.subheader('Texts')
+    col21, col22 = st.columns(2)
+    with col21:
+        newHeadlineText = st.text_input('Headline Text', headlineText)
+    with col22:
+        newHeadlineStyle = st.selectbox('Headline Style', pd.Series(headlineStyles), headlineStyleIndex)
+    col31, col32 = st.columns(2)
+    with col31:
+        newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
+    with col32:
+        newSubHeadlineStyle = st.selectbox('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
+    st.subheader('Buttons')
+    newButtonNumber = st.select_slider('Number of buttons',["1", "2"], buttonsNumber)
+    col41, col42 = st.columns(2)
+    with col41:
+        st.text("Button 1")
+        newButton1Text = st.text_input('Button 1 Text', button1Text)
+        newButton1Style = st.selectbox('Button 1 Style', pd.Series(buttonStyles), button1StyleIndex)
+        newButton1Action = st.selectbox('Button 1 Action', pd.Series(buttonActions), button1ActionIndex)
+        newButton1Url = st.text_input('Button 1 URL', button1Url)
+        newButton1Tag = st.text_input("Button 1 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button1Tag)
+    with col42:
+        if newButtonNumber == "2":
+            st.text("Button 2")
+            newButton2Text = st.text_input('Button 2 Text', button2Text)
+            newButton2Style = st.selectbox('Button 2 Style', pd.Series(buttonStyles), button2StyleIndex)
+            newButton2Action = st.selectbox('Button 2 Action', pd.Series(buttonActions), button2ActionIndex)
+            newButton2Url = st.text_input('Button 2 URL', button2Url)
+            newButton2Tag = st.text_input("Button 2 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
+    st.subheader('Images')
+    if newTempateType == "gradient":
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
+        col51, col52 = st.columns(2)
+        with col51:
+            newBackgroundGradient = st.selectbox('Background Gradient', pd.Series(backgroundGradientStyles), backgroundGradientIndex)
+        with col52:
+            newImageGradient = st.text_input('Image Gradient', imageGradient)
+            if showImages == True:
+                st.image(newImageGradient, caption='Image Gradient')
+    elif newTempateType == "full-image":
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
+        col51, col52, col53, col54 = st.columns(4)
+        with col51:
             newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
             if showImages == True:
-                    st.image(newbackgroundImageS, caption='Image S')
+                st.image(newbackgroundImageS, caption='Image S')
+        with col52:
+            newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
+            if showImages == True:
+                st.image(newbackgroundImageM, caption='Image M')
+        with col53:
+            newbackgroundImageL = st.text_input('Background Image L', backgroundImageL)
+            if showImages == True:
+                st.image(newbackgroundImageL, caption='Image L')
+        with col54:
+            newbackgroundImageXL = st.text_input('Background Image XL', backgroundImageXL)
+            if showImages == True:
+                st.image(newbackgroundImageXL, caption='Image XL')
+    else:
+        newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
+        newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
+        if showImages == True:
+                st.image(newbackgroundImageS, caption='Image S')
 
 
