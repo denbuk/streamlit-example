@@ -13,6 +13,8 @@ with st.echo(code_location='below'):
 
     bannerTypes = ["VelkePromo", "PageImage", "MalePromo"]
     templateTypes = ["full-image", "gradient"]
+    headlineStyles = ["primary", "secondary"]
+    subHeadlineStyles = ["primary", "secondary"]
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -53,6 +55,8 @@ with st.echo(code_location='below'):
     headlineStyle = texts['headlineStyle']
     subHeadlineText = texts['subHeadlineText']
     subHeadlineStyle = texts['subHeadlineStyle']
+    headlineStyleIndex = headlineStyles.index(headlineStyle)
+    subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
 
     st.subheader('Campaign definition')
 
@@ -87,6 +91,18 @@ with st.echo(code_location='below'):
 
     st.subheader('Texts')
 
-    newHeadline = st.text_input('Headline Text', headlineText)
+    col21, col22 = st.columns(2)
 
-    newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
+    with col21:
+        newHeadlineText = st.text_input('Headline Text', headlineText)
+    
+    with col22:
+        newHeadlineStyle = st.text_input('Headline Text', pd.Series(headlineStyles), headlineStyleIndex)
+
+    col31, col32 = st.columns(2)
+
+    with col31:
+        newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
+    
+    with col32:
+        newSubHeadlineStyle = st.text_input('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
