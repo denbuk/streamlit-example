@@ -36,7 +36,7 @@ with st.echo(code_location='below'):
     resp = response.json()
     items_list = resp.get("data")
     items_ids = []
-    st.write(items_list)
+    #st.write(items_list)
 
     for x in items_list:
         items_ids.append(x['item_id'])
