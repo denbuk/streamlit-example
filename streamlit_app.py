@@ -76,6 +76,14 @@ with st.echo(code_location='below'):
         button2ActionIndex = buttonActions.index(button2Action)
         button2Url = buttons[1]['buttonUrl']
         button2Tag = buttons[1]['buttonTag']
+    else:
+        button2Text = ""
+        button2Style = ""
+        button2StyleIndex = "primary"
+        button2Action = buttons[1]['buttonAction']
+        button2ActionIndex = "url"
+        button2Url = ""
+        button2Tag = "_ic="
 
     st.subheader('Campaign definition')
 
