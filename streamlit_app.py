@@ -31,7 +31,8 @@ with st.echo(code_location='below'):
 
     for x in items_list:
         items_ids.append(x['item_id'])
-
+    
+    st.write(items_ids)
 
     campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
 
