@@ -18,6 +18,6 @@ with st.echo(code_location='below'):
 	  }
     }
  
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.put(url, headers=headers, json=data)
 
     st.write("JSON Response ", response.json())
