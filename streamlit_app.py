@@ -45,8 +45,14 @@ with st.echo(code_location='below'):
     templateId = item_properties['tempateId']
     templateType = item_properties['templateType']
     templateIdIndex = bannerTypes.index(templateId)
+    templateTypeIndex = bannerTypes.index(templateType)
     StartDate = datetime.fromtimestamp(item_properties['validFrom'])
     EndDate = datetime.fromtimestamp(item_properties['validTill'])
+    texts = json.loads(item_properties['texts'])
+    headlineText = texts['headlineText']
+    headlineStyle = texts['headlineStyle']
+    subHeadlineText = texts['subHeadlineText']
+    subHeadlineStyle = texts['subHeadlineStyel']
 
     st.subheader('Campaign definition')
 
@@ -59,7 +65,7 @@ with st.echo(code_location='below'):
 
     with col12:
         if newTempateId in ["VelkePromo", "PageImage"]:
-            newTempateType = st.selectbox("Template type", pd.Series(bannerTypes), templateIdIndex)
+            newTempateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
         else:
             newTempateType = ""
 
@@ -79,4 +85,8 @@ with st.echo(code_location='below'):
     with col4:
         newEndTime = st.time_input("End time", EndDate)
 
-    
+    st.subheader('Texts')
+
+    newHeadline = st.text_input('Headline Text', headlineText)
+
+    newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
