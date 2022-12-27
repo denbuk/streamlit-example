@@ -187,8 +187,8 @@ with st.echo(code_location='below'):
         col51, col52, col53, col54 = st.columns(4)
         with col51:
             newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
-            imageS = str(Image.open(newbackgroundImageS))
-            st.image(imageS, caption='Image S')
+            imageS = Image.open(newbackgroundImageS)
+            st.image(newbackgroundImageS, caption='Image S')
         with col52:
             newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
         with col53:
