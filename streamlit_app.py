@@ -23,6 +23,4 @@ with st.echo(code_location='below'):
 
     items_list = json.loads(response)
 
-    campaign_list = [];
-
-    st.write("JSON Response ", items_list)
+    st.write("JSON Response ", items_list['XXXXX'])
