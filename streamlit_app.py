@@ -21,6 +21,7 @@ In the meantime, below is an example of what you can do with just a few lines of
 
 with st.echo(code_location='below'):
     response = rq.get("http://api.open-notify.org/astros.json")
+    st.write(response)
     total_points = st.slider("XXXX", 1, 5000, 2000)
     num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
 
