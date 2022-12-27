@@ -7,6 +7,8 @@ import requests
 import json
 
 with st.echo(code_location='below'):
+
+    st.title('CMS for o2.cz campaigns')
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -38,8 +40,8 @@ with st.echo(code_location='below'):
 
     index = items_ids.index(campaign_option)
     item_id = items_ids[index]
-    item_properties = items_list[index]['properties']["b"]
+    item_properties = items_list[index]['properties']
     item_properties_json = json.loads(item_properties)
-    item_title = item_properties_json[0]['headline']
+    campaignId = item_properties_json['campaignId']
 
-    title = st.text_input('Campaign Name', item_title)
+    title = st.text_input('Campaign Name', campaignId)
