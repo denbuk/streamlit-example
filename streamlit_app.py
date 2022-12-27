@@ -176,26 +176,39 @@ with st.echo(code_location='below'):
 
     if newTempateType == "gradient":
         newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
         col51, col52 = st.columns(2)
         with col51:
             newBackgroundGradient = st.selectbox('Background Gradient', pd.Series(backgroundGradientStyles), backgroundGradientIndex)
-        
         with col52:
             newImageGradient = st.text_input('Image Gradient', imageGradient)
+            if showImages == True:
+                st.image(newImageGradient, caption='Image Gradient')
     elif newTempateType == "full-image":
         newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
         col51, col52, col53, col54 = st.columns(4)
         with col51:
             newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
-            st.image(newbackgroundImageS, caption='Image S')
+            if showImages == True:
+                st.image(newbackgroundImageS, caption='Image S')
         with col52:
             newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
+            if showImages == True:
+                st.image(newbackgroundImageM, caption='Image M')
         with col53:
             newbackgroundImageL = st.text_input('Background Image L', backgroundImageL)
+            if showImages == True:
+                st.image(newbackgroundImageL, caption='Image L')
         with col54:
             newbackgroundImageXL = st.text_input('Background Image XL', backgroundImageXL)
+            if showImages == True:
+                st.image(newbackgroundImageXL, caption='Image XL')
     else:
         newImageAlt = st.text_input('Image Alt', imageAlt)
+        showImages = st.checkbox('Show images', False)
         newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
+        if showImages == True:
+                st.image(newbackgroundImageS, caption='Image S')
 
 
