@@ -15,6 +15,8 @@ with st.echo(code_location='below'):
     templateTypes = ["full-image", "gradient"]
     headlineStyles = ["primary", "secondary"]
     subHeadlineStyles = ["primary", "secondary"]
+    buttonStyles = ["primary", "secondary", "neutral"]
+    buttonActions = ["url", "none"]
     
     url = "https://api-exponea.o2.sk/data/v2/projects/5851ab46-b9d8-11e9-beef-92ec88286fd6/catalogs/63aae549778d423d3db4e841/items"
  
@@ -59,6 +61,21 @@ with st.echo(code_location='below'):
     subHeadlineStyleIndex = subHeadlineStyles.index(subHeadlineStyle)
     buttons = json.loads(item_properties['buttons'])
     buttonsNumber = str(len(buttons))
+    button1Text = buttons[0]['buttonText']
+    button1Style = buttons[0]['buttonStyle']
+    button1StyleIndex = buttonStyles.index(button1Style)
+    button1Action = buttons[0]['buttonAction']
+    button1ActionIndex = buttonActions.index(button1Action)
+    button1Url = buttons[0]['buttonUrl']
+    button1Tag = buttons[0]['buttonTag']
+    if len(buttons) == 2:
+        button2Text = buttons[1]['buttonText']
+        button2Style = buttons[1]['buttonStyle']
+        button2StyleIndex = buttonStyles.index(button2Style)
+        button2Action = buttons[1]['buttonAction']
+        button2ActionIndex = buttonActions.index(button2Action)
+        button2Url = buttons[1]['buttonUrl']
+        button2Tag = buttons[1]['buttonTag']
 
     st.subheader('Campaign definition')
 
@@ -99,7 +116,7 @@ with st.echo(code_location='below'):
         newHeadlineText = st.text_input('Headline Text', headlineText)
     
     with col22:
-        newHeadlineStyle = st.selectbox('Headline Text', pd.Series(headlineStyles), headlineStyleIndex)
+        newHeadlineStyle = st.selectbox('Headline Style', pd.Series(headlineStyles), headlineStyleIndex)
 
     col31, col32 = st.columns(2)
 
@@ -111,4 +128,23 @@ with st.echo(code_location='below'):
     
     st.subheader('Buttons')
 
-    newButtonNumber = st.select_slider('Number of buttons',["1", "2"],buttonsNumber)
+    newButtonNumber = st.select_slider('Number of buttons',["1", "2"], buttonsNumber)
+
+    col41, col42 = st.columns(2)
+
+    with col41:
+        st.text("Button 1")
+        newButton1Text = st.text_input('Button Text', button1Text)
+        newButton1Style = st.selectbox('Button Style', pd.Series(buttonStyles), button1StyleIndex)
+        newButton1Action = st.selectbox('Button Action', pd.Series(buttonActions), button1ActionIndex)
+        newButton1Url = st.text_input('Button URL', button1Url)
+        newButton1Tag = st.text_input('Button Tag', button1Tag)
+
+    with col42:
+        if newButtonNumber == "2":
+            st.text("Button 2")
+            newButton2Text = st.text_input('Button Text', button2Text)
+            newButton2Style = st.selectbox('Button Style', pd.Series(buttonStyles), button2StyleIndex)
+            newButton2Action = st.selectbox('Button Action', pd.Series(buttonActions), button2ActionIndex)
+            newButton2Url = st.text_input('Button URL', button2Url)
+            newButton2Tag = st.text_input('Button Tag', button2Tag)
