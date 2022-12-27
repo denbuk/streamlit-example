@@ -41,13 +41,9 @@ with st.echo(code_location='below'):
     for x in items_list:
         items_ids.append(x['item_id'])
 
-    col101, col102 = st.columns(2)
-    with col101:
-        newCampaign = st.button('Create new campaign')
-    with col102:
-        exploreCampaigns = st.button('Explore campaigns')
+    tab1, tab2 = st.tabs(["Create new campaign", "Explore campaigns"])
 
-    if newCampaign:
+    with tab1:
         newCampaignId = st.text_input('New campaign ID')
 
         urlRegex = ""
@@ -87,7 +83,7 @@ with st.echo(code_location='below'):
         backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
         imageGradient = ""
         imageAlt = ""
-    elif exploreCampaigns:
+    with tab2:
         campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
         index = items_ids.index(campaign_option)
         item_id = items_ids[index]
@@ -143,7 +139,7 @@ with st.echo(code_location='below'):
         imageGradient = images['imageGradient']
         imageAlt = images['imageAlt']
 
-    if newCampaign or exploreCampaigns:
+    if 1==1:
         st.subheader('Campaign definition')
         col11, col12, col13 = st.columns(3)
         with col11:
