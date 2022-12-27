@@ -42,10 +42,10 @@ with st.echo(code_location='below'):
     item_id = items_ids[index]
     item_properties = items_list[index]['properties']
     campaignId = item_properties['campaignId']
+    urlRegex = item_properties['urlRegex']
 
     st.subheader('Campaign definition')
 
-    title = st.text_input('Campaign Name', campaignId)
+    newCampaignId = st.text_input('Campaign Name', campaignId)
 
-    st.text('Targeted URIs, regex representation.')
-    st.markdown("[I need help](%s)" % "https://regexr.com/")
+    newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help](%s)" % "https://regexr.com/", urlRegex)
