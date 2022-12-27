@@ -36,4 +36,8 @@ with st.echo(code_location='below'):
 
     campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
 
-    title = st.text_input('Campaign Name', "Hello")
+    index = items_ids.index(campaign_option)
+    item_id = items_ids[index]
+    item_properties = items_list[item_id]['properties']["b"]
+
+    title = st.text_input('Campaign Name', item_properties)
