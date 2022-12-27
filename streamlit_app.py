@@ -54,7 +54,7 @@ with st.echo(code_location='below'):
 
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
-    col1, col2, col3, col4 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         newStartDate = st.date_input("Start date", StartDate)
