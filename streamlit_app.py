@@ -28,7 +28,7 @@ with st.echo(code_location='below'):
     items_ids = []
 
     for x in items_list:
-        items_ids.append(x.item_id)
+        items_ids.append(x['item_id'])
 
 
     st.write("JSON Response ", items_ids)
