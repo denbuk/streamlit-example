@@ -34,10 +34,10 @@ with st.echo(code_location='below'):
 
     tab1, tab2 = st.tabs(["Create new campaign", "Explore campaigns"])
 
-    with tab1:
+    with tab2:
         newCampaignId = st.text_input('New campaign ID')
-        tab = "tab1"
-        if tab == "tab1":
+        tab = "tab2"
+        if tab == "tab2":
             urlRegex = ""
             internalUsers = True
             templateId = "PageImage"
@@ -75,9 +75,9 @@ with st.echo(code_location='below'):
             backgroundGradientIndex = backgroundGradientStyles.index(backgroundGradient)
             imageGradient = ""
             imageAlt = ""
-    with tab2:
-        tab = "tab2"
-        if tab == "tab2":
+    with tab1:
+        tab = "tab1"
+        if tab == "tab1":
             response = requests.get(url, headers=headers)
 
             resp = response.json()
@@ -87,7 +87,7 @@ with st.echo(code_location='below'):
 
             for x in items_list:
                 items_ids.append(x['item_id'])
-                
+
             campaign_option = st.selectbox("Campaign Code (campaign_id)", pd.Series(items_ids))
             index = items_ids.index(campaign_option)
             item_id = items_ids[index]
