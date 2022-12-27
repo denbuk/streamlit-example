@@ -32,7 +32,7 @@ with st.echo(code_location='below'):
  
     #response = requests.put(url, headers=headers, json=data)
 
-    tab1, tab2 = st.tabs(["Create new campaign", "Explore campaigns"])
+    tab1, tab2 = st.tabs(["Explore campaigns", "Create new campaign"])
 
     with tab2:
         newCampaignId = st.text_input('New campaign ID')
