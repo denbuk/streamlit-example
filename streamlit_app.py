@@ -194,7 +194,7 @@ with st.echo(code_location='below'):
             newButton2Url = st.text_input('Button 2 URL', button2Url)
             newButton2Tag = st.text_input("Button 2 Tag [I need to create a tag.](%s)" % "https://regexr.com/", button2Tag)
     st.subheader('Images')
-    if newTempateType == "gradient":
+    if newTemplateType == "gradient":
         newImageAlt = st.text_input('Image Alt', imageAlt)
         showImages = st.checkbox('Show images', False)
         col51, col52 = st.columns(2)
@@ -204,7 +204,7 @@ with st.echo(code_location='below'):
             newImageGradient = st.text_input('Image Gradient', imageGradient)
             if showImages == True:
                 st.image(newImageGradient, caption='Image Gradient')
-    elif newTempateType == "full-image":
+    elif newTemplateType == "full-image":
         newImageAlt = st.text_input('Image Alt', imageAlt)
         showImages = st.checkbox('Show images', False)
         col51, col52, col53, col54 = st.columns(4)
