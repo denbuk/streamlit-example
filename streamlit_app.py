@@ -97,7 +97,7 @@ with st.echo(code_location='below'):
         newHeadlineText = st.text_input('Headline Text', headlineText)
     
     with col22:
-        newHeadlineStyle = st.text_input('Headline Text', pd.Series(headlineStyles), headlineStyleIndex)
+        newHeadlineStyle = st.selectbox('Headline Text', pd.Series(headlineStyles), headlineStyleIndex)
 
     col31, col32 = st.columns(2)
 
@@ -105,4 +105,4 @@ with st.echo(code_location='below'):
         newSubHeadline = st.text_input('Subheadline Text', subHeadlineText)
     
     with col32:
-        newSubHeadlineStyle = st.text_input('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
+        newSubHeadlineStyle = st.selectbox('Subheadline Style', pd.Series(subHeadlineStyles), subHeadlineStyleIndex)
