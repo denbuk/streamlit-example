@@ -144,7 +144,6 @@ with st.echo(code_location='below'):
         imageAlt = images['imageAlt']
 
     st.subheader('Campaign definition')
-    newCampaignId = st.text_input('Campaign Name', campaignId)
     col11, col12, col13 = st.columns(3)
     with col11:
         newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
