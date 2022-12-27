@@ -1,5 +1,6 @@
 from collections import namedtuple
 from datetime import datetime
+from PIL import Image
 import altair as alt
 import math
 import pandas as pd
@@ -174,30 +175,28 @@ with st.echo(code_location='below'):
     st.subheader('Images')
 
     if newTempateType == "gradient":
+        newImageAlt = st.text_input('Image Alt', imageAlt)
         col51, col52 = st.columns(2)
-
         with col51:
             newBackgroundGradient = st.selectbox('Background Gradient', pd.Series(backgroundGradientStyles), backgroundGradientIndex)
         
         with col52:
             newImageGradient = st.text_input('Image Gradient', imageGradient)
-
-        newImageAlt = st.text_input('Image Alt', imageAlt)
     elif newTempateType == "full-image":
+        newImageAlt = st.text_input('Image Alt', imageAlt)
         col51, col52, col53, col54 = st.columns(4)
         with col51:
             newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
+            imageS = Image.open(newbackgroundImageS)
+            st.image(imageS, caption='Image S')
         with col52:
             newbackgroundImageM = st.text_input('Background Image M', backgroundImageM)
         with col53:
             newbackgroundImageL = st.text_input('Background Image L', backgroundImageL)
         with col54:
             newbackgroundImageXL = st.text_input('Background Image XL', backgroundImageXL)
-
-        newImageAlt = st.text_input('Image Alt', imageAlt)
     else:
-        newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
-
         newImageAlt = st.text_input('Image Alt', imageAlt)
+        newbackgroundImageS = st.text_input('Background Image S', backgroundImageS)
 
 
