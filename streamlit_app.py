@@ -1,4 +1,5 @@
 from collections import namedtuple
+from datetime import datetime
 import altair as alt
 import math
 import pandas as pd
@@ -42,11 +43,16 @@ with st.echo(code_location='below'):
     urlRegex = item_properties['urlRegex']
     templateId = item_properties['tempateId']
     templateIdIndex = bannerTypes.index(templateId)
+    StartDate = datetime.fromtimestamp(item_properties['validFrom'])
 
     st.subheader('Campaign definition')
 
     newCampaignId = st.text_input('Campaign Name', campaignId)
 
+    newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
 
-    newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+    newStartDate = st.date_input("Start date and time", StartDate)
+
+    
