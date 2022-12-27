@@ -146,12 +146,12 @@ with st.echo(code_location='below'):
     st.subheader('Campaign definition')
     col11, col12, col13 = st.columns(3)
     with col11:
-        newTempateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
+        newTemplateId = st.selectbox("Banner type", pd.Series(bannerTypes), templateIdIndex)
     with col12:
-        if newTempateId in ["VelkePromo", "PageImage"]:
-            newTempateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
+        if newTemplateId in ["VelkePromo", "PageImage"]:
+            newTemplateType = st.selectbox("Template type", pd.Series(templateTypes), templateTypeIndex)
         else:
-            newTempateType = ""
+            newTemplateType = ""
     with col13:
         newInternalUsers = st.checkbox('Seen by internal users', internalUsers)
     newUrlRegex = st.text_input("Targeted URIs, regex representation. [I need help.](%s)" % "https://regexr.com/", urlRegex)
