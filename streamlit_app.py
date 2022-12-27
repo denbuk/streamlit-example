@@ -21,6 +21,4 @@ with st.echo(code_location='below'):
     #response = requests.put(url, headers=headers, json=data)
     response = requests.get(url, headers=headers)
 
-    items_list = json.loads(response)
-
-    st.write("JSON Response ", items_list['XXXXX'])
+    st.write("JSON Response ", response)
